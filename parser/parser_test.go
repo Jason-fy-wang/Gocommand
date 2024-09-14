@@ -50,4 +50,7 @@ func TestString(t *testing.T) {
 
 	t.Logf("0-3: %s", token[0:4])
 
+	if token[0:4] != "name" {
+		t.Error("error")
+	}
 }
