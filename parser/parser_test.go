@@ -21,6 +21,10 @@ func TestLexer(t *testing.T) {
 		Expect []string
 	}{
 		{
+			Input:  `{"name":  123 }`,
+			Expect: []string{"{", "name", ":", "123", "}"},
+		},
+		{
 			Input:  `{"name":"zhangsan"}`,
 			Expect: []string{"{", "name", ":", "zhangsan", "}"},
 		},
@@ -28,19 +32,22 @@ func TestLexer(t *testing.T) {
 			Input:  `{"name":null}`,
 			Expect: []string{"{", "name", ":", "null", "}"},
 		},
-		{
-			Input:  `{"name":123}`,
-			Expect: []string{"{", "name", ":", "123", "}"},
-		},
 	}
 
 	for _, item := range testTable {
 		l := NewLex(item.Input)
 		token := l.NextToken()
-
+		t.Logf("token %s", token)
 		for token != EOF {
-			t.Logf("token %s", token)
 			token = l.NextToken()
+			t.Logf("token %s", token)
 		}
 	}
+}
+
+func TestString(t *testing.T) {
+	token := "name:null"
+
+	t.Logf("0-3: %s", token[0:4])
+
 }
