@@ -15,4 +15,7 @@
 # vendor/
 .vscode
 vendor
+console
+command
+
 
