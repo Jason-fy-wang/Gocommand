@@ -46,7 +46,7 @@ var (
 	gold  = lipgloss.NewStyle().Bold(true).Foreground(lipgloss.Color("#B8860B"))
 )
 
-var proxy, _ = url.Parse("http://localhost:7897")
+var proxy, _ = url.Parse("http://192.168.20.1:7890")
 
 func (gh *GithubTrending) getUrlPath() string {
 
@@ -59,14 +59,21 @@ func (gh *GithubTrending) getUrlPath() string {
 
 func (gh *GithubTrending) Query() ([]*TrendingInfo, error) {
 	trends := []*TrendingInfo{}
-
+	excludes := []string{"localhost", "127.0.0.1"}
 	requstPath := gh.getUrlPath()
 	log.Infof("request path: %s", requstPath)
 
-	cusTransport := &http.Transport{}
+	cusTransport := &http.Transport{
+		Proxy: func(req *http.Request) (*url.URL, error) {
+			// 排除不需要代理的URL
+			for _, v := range excludes {
+				if strings.Contains(req.URL.Host, v) {
+					return nil, nil
+				}
+			}
 
-	if gh.Proxy != nil {
-		cusTransport.Proxy = http.ProxyURL(gh.Proxy)
+			return http.ProxyURL(gh.Proxy)(req)
+		},
 	}
 
 	client := &http.Client{

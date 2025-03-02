@@ -1,20 +1,8 @@
-package main
+package trending
 
 import (
-	"com.learn/command/trending"
-	"com.learn/command/tui"
 	cli "github.com/urfave/cli/v2"
 )
-
-var TuiCommand = &cli.Command{
-	Name:  "tui",
-	Usage: "tui usuage",
-
-	Action: func(context *cli.Context) error {
-		tui.TuiStarter()
-		return nil
-	},
-}
 
 var GhQuery = &cli.Command{
 	Name:  "gh",
@@ -35,7 +23,7 @@ var GhQuery = &cli.Command{
 	Action: func(context *cli.Context) error {
 		inputLang := context.String("lang")
 		format := context.String("format")
-		trending.GhTrendingQuery(inputLang, format)
+		GhTrendingQuery(inputLang, format)
 		return nil
 	},
 }
