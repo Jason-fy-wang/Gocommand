@@ -2,7 +2,7 @@ package parser
 
 func parseObject(l *Lexer, results *map[string]interface{}) {
 
-	key := l.NextToken()
+	//key := l.NextToken()
 
 }
 
