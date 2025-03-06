@@ -1,6 +1,8 @@
 module com.learn/command
 
-go 1.22
+go 1.23.0
+
+toolchain go1.23.7
 
 require (
 	github.com/PuerkitoBio/goquery v1.9.2
@@ -8,6 +10,7 @@ require (
 	github.com/charmbracelet/lipgloss v0.13.0
 	github.com/sirupsen/logrus v1.9.3
 	github.com/urfave/cli/v2 v2.27.4
+	golang.org/x/exp v0.0.0-20250305212735-054e65f0b394
 )
 
 require (
@@ -31,7 +34,7 @@ require (
 	github.com/xo/terminfo v0.0.0-20220910002029-abceb7e1c41e // indirect
 	github.com/xrash/smetrics v0.0.0-20240521201337-686a1a2994c1 // indirect
 	golang.org/x/net v0.24.0 // indirect
-	golang.org/x/sync v0.8.0 // indirect
+	golang.org/x/sync v0.12.0 // indirect
 	golang.org/x/sys v0.24.0 // indirect
 	golang.org/x/text v0.14.0 // indirect
 )

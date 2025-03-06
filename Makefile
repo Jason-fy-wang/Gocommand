@@ -26,6 +26,9 @@ display:
 	@echo "display import difference"
 	goimports -d -e -l ${dirs}
 
+check_update:
+	go list -m -mod=mod -u all 
+
 # ./...  the mean of ... in here is: all the packages in the current directory and all of its subdirectories
 test:
 	go test -cover -coverprofile=coverage.out ./...
