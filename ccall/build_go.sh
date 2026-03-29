@@ -3,6 +3,5 @@
 dir=$(dirname "$0")
 script=$(basename "$0")
 cd "$dir"
-
-gcc -c callC.c -o callC.o
-ar rcs libcallC.a callC.o
+# build go pkg to C
+go build -o ccall.o -buildmode=c-archive exportfunc.go

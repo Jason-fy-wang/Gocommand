@@ -4,5 +4,5 @@ dir=$(dirname "$0")
 script=$(basename "$0")
 cd "$dir"
 
-gcc -c callC.c -o callC.o
-ar rcs libcallC.a callC.o
+gcc -o cfunction cfunction.c ccall.o
+
