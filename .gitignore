@@ -17,5 +17,7 @@
 vendor
 console
 command
+*.o
+*.a
 
 
