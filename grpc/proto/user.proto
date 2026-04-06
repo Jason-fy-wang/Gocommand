@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package user;
+
+option go_package = "../pb;pb";
+
+// define service
+service UserService {
+
+    // simple RPC interface
+    rpc GetUserInfo (UserRequest) returns(UserResponse);
+}
+
+message UserRequest {
+    int64 user_id = 1;
+    string token = 2;
+}
+
+message UserResponse {
+    int64 user_id = 1;
+    string username = 2;
+    int32 age = 3;
+    bool success = 4;
+    string msg = 6;
+}
+
+
+
